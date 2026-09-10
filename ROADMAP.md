@@ -107,6 +107,7 @@ server/
 - **`web-core`에 도메인 코드 금지**: 프레임워크 모듈에 boardy 지식이 새어 들어가면 안 된다. 이 제약 자체가 Spring의 모듈 분리(spring-core / spring-web / spring-webmvc)를 체감하는 학습 장치다.
 - **단계 완료 시 `git tag step-N`**: 단일 코드베이스를 계속 진화시키되 tag로 단계 스냅샷을 남긴다. `git diff step-3..step-4`가 "수동 등록 → DI 전환"의 교재가 된다.
 - **DoD 충족 → 학습 노트 작성 → 태그 → 커밋** 순서를 지킨다. 학습 노트가 이 프로젝트의 실질 산출물이다.
+- **Claude와의 협업 계약**(인수 테스트 작성, 소크라테스식 리뷰, 구술 퀴즈 등 진행 방식)은 [CLAUDE.md](CLAUDE.md) 참고.
 
 ## 6. 미니 스프링 ↔ Spring 대응표 (전체 요약)
 
