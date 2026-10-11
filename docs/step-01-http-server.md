@@ -14,8 +14,8 @@
 ## 구현할 것
 
 - [ ] `ServerSocket` accept 루프
-- [ ] HTTP 요청 파서: 요청 라인 / 헤더 / 바디 → record `HttpRequest`
-- [ ] 응답 직렬화: status line + headers + body → record `HttpResponse`
+- [ ] HTTP 요청 파서: 요청 라인 / 헤더 / 바디 → data class `HttpRequest`
+- [ ] 응답 직렬화: status line + headers + body → data class `HttpResponse`
 - [ ] 실행 모델 3종 스위칭 가능하게:
   - [ ] single-thread
   - [ ] `ExecutorService` 고정 스레드풀

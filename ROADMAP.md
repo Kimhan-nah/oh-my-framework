@@ -1,11 +1,12 @@
-# Java 웹 서버 내부 원리 학습 로드맵
+# Kotlin 웹 서버 내부 원리 학습 로드맵
 
 Spring을 "쓸 줄 아는" 상태에서 "왜 그렇게 생겼는지 아는" 상태로 가기 위한 학습 프로젝트.
 
 ## 1. 프로젝트 목표와 방식
 
-- **혼합 방식**: 전반부(Step 1~7)는 프레임워크 없이 순수 Java로 미니 스프링(`web-core`)을 직접 만들고, 후반부(Step 8)에 같은 애플리케이션을 실제 Spring Boot로 포팅해 내가 만든 것과 비교한다.
-- **Java 21 LTS**: record, 가상 스레드(JEP 444), 패턴 매칭 등 모던 문법을 적극 활용한다.
+- **혼합 방식**: 전반부(Step 1~7)는 프레임워크 없이 순수 Kotlin으로 미니 스프링(`web-core`)을 직접 만들고, 후반부(Step 8)에 같은 애플리케이션을 실제 Spring Boot로 포팅해 내가 만든 것과 비교한다.
+- **Kotlin 2.x + JVM 21**: data class, sealed class + `when`, 가상 스레드(JEP 444 — JVM 기능이라 Kotlin에서도 그대로 사용) 등 모던 문법을 적극 활용한다.
+- **Kotlin 고유 학습 장치**: Kotlin 클래스는 기본 `final`이라 Step 6(프록시)에서 상속 기반 프록시의 벽에 직접 부딪힌다 — "왜 kotlin-spring(all-open) 플러그인이 존재하는가"를 체감하는 구간.
 - **기간 없음, DoD 기반**: 각 단계는 마감일 대신 검증 가능한 **완료 기준(Definition of Done)** 을 가진다. DoD를 만족하면 `git tag step-N`을 찍고 다음 단계로 넘어간다.
 - **최종 결과물**: "내가 만든 미니 스프링과 실제 Spring Boot가 동일한 통합 테스트를 통과한다" — 이것이 이 프로젝트의 끝 그림이다.
 
@@ -46,7 +47,7 @@ Spring을 "쓸 줄 아는" 상태에서 "왜 그렇게 생겼는지 아는" 상�
 
 | Step | 제목 | 한 줄 요약 |
 |---|---|---|
-| 0 | [프로젝트 셋업](docs/step-00-setup.md) | Gradle 멀티모듈 + Java 21 toolchain 골격 |
+| 0 | [프로젝트 셋업](docs/step-00-setup.md) | Gradle 멀티모듈 + Kotlin JVM 21 toolchain 골격 |
 | 1 | [소켓 HTTP 서버](docs/step-01-http-server.md) | HTTP는 그냥 텍스트다 — 파서, keep-alive, 스레드 모델 3종 |
 | 2 | [서블릿 추상화 + 라우팅](docs/step-02-servlet-routing.md) | Handler 계약과 path variable 라우터 |
 | 3 | [애노테이션 MVC](docs/step-03-annotation-mvc.md) | DispatcherServlet = 리플렉션 라우팅 + 바인딩 + 변환 |
@@ -131,6 +132,7 @@ server/
 | `SessionStore` | `HttpSession` | 5 |
 | 프록시 팩토리 + 후처리 훅 | `BeanPostProcessor`, `AnnotationAwareAspectJAutoProxyCreator` | 6 |
 | `@Around` 어드바이스 | `@Aspect` / `@Around` | 6 |
+| Kotlin `final` 클래스 × 프록시의 벽 | kotlin-spring(all-open) 플러그인, `proxyTargetClass` | 6 |
 | `MyJdbcTemplate` + `RowMapper` | `JdbcTemplate` + `RowMapper` | 7 |
 | `ThreadLocal<Connection>` 동기화 | `TransactionSynchronizationManager` | 7 |
 | `@MyTransactional` 프록시 | `TransactionInterceptor` + `@Transactional` | 7 |

@@ -10,6 +10,7 @@
 
 - **왜 `@Transactional`을 같은 클래스 내부 호출(self-invocation)에서 쓰면 안 먹을까?** → 이 단계에서 내 프록시로 직접 재현한다. 실무자에게 "아하"가 가장 큰 구간.
 - 스프링 빈을 주입받으면 가끔 클래스 이름에 `$Proxy` / `$$SpringCGLIB`이 붙어 있는 이유는?
+- **Kotlin 프로젝트에는 왜 `kotlin("plugin.spring")`(all-open)이 거의 필수로 붙어 있을까?** → Kotlin 클래스는 기본 `final`이다. 이 단계에서 그 벽에 직접 부딪힌다.
 
 ## 구현할 것
 
@@ -22,6 +23,7 @@
   - [ ] `@Retry` — 예외 시 재시도
 - [ ] **자기 호출(self-invocation) 문제 재현 테스트** — 같은 클래스 안에서 `this.method()` 호출 시 어드바이스가 적용되지 않음을 증명
 - [ ] (문서로만 정리) CGLIB/ByteBuddy 클래스 프록시와의 차이, 인터페이스 없는 빈은 어떻게 프록시하나
+- [ ] (문서로만 정리) **Kotlin `final` 클래스 × 상속 기반 프록시**: 인터페이스 없는 Kotlin 클래스를 CGLIB 방식으로 프록시하려면 왜 실패하나 → kotlin-spring(all-open) 플러그인이 하는 일 정리
 
 ## Spring 대응표
 
@@ -34,6 +36,7 @@
 | 컨테이너 후처리 훅 | `BeanPostProcessor.postProcessAfterInitialization` |
 | 자동 프록시 등록 | `AnnotationAwareAspectJAutoProxyCreator` |
 | (문서) 클래스 프록시 | CGLIB, `proxyTargetClass=true` |
+| (문서) Kotlin `final` 클래스의 벽 | kotlin-spring(all-open) 플러그인 |
 
 **비교 포인트**: "빈을 꺼냈더니 원본이 아니라 프록시더라"가 어떻게 가능한지 — 컨테이너가 빈 생성 직후 후처리 훅에서 객체를 **교체**하기 때문. 이 훅 하나로 AOP, `@Transactional`, `@Async` 등이 모두 설명된다.
 

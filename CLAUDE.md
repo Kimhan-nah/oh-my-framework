@@ -8,7 +8,7 @@
 - 예외는 정확히 2가지:
   1. **step 인수 테스트 작성** (아래 사이클 2번)
   2. 사용자가 **"정답 코드 보여줘"라고 명시적으로 요청**할 때
-- 글로벌 `~/.claude/rules/java-spring/`(karechat 실무 규칙: Java 11, Lombok, Spring 레이어드)은 이 프로젝트에 **적용하지 않는다.** 여기는 Java 21 + 순수 Java(프레임워크 없음) 학습 프로젝트다. record, 가상 스레드, 패턴 매칭 등 모던 문법을 권장한다.
+- 글로벌 `~/.claude/rules/java-spring/`·`~/.claude/rules/kotlin-spring/`(karechat 실무 규칙)은 이 프로젝트에 **적용하지 않는다.** 여기는 Kotlin 2.x + JVM 21 **순수 Kotlin(프레임워크 없음)** 학습 프로젝트다. data class, sealed class + `when`, 가상 스레드 등 모던 문법을 권장한다.
 - karechat 특화 리뷰 스킬(`/review` 멀티 에이전트 등)도 사용하지 않는다. 리뷰는 아래 "소크라테스식 리뷰 규칙"으로 직접 수행한다.
 
 ## step 진행 사이클

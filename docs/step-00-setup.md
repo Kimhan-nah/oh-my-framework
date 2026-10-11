@@ -3,7 +3,7 @@
 ## 학습 목표
 
 - Gradle 멀티모듈 구조를 이해하고 "프레임워크 모듈 vs 앱 모듈" 분리 감각을 잡는다.
-- Java 21 toolchain 설정과 JUnit 5 테스트 하네스를 준비한다.
+- Kotlin JVM toolchain(21) 설정과 JUnit 5 테스트 하네스를 준비한다.
 
 ## 실무 미스터리
 
@@ -12,7 +12,7 @@
 ## 구현할 것
 
 - [ ] Gradle 멀티모듈 골격: `settings.gradle.kts` + `web-core/` + `app/`
-- [ ] Java 21 toolchain 설정 (`java { toolchain { languageVersion = JavaLanguageVersion.of(21) } }`)
+- [ ] Kotlin 2.x + JVM 21 toolchain 설정 (`kotlin("jvm")` 플러그인 + `kotlin { jvmToolchain(21) }`)
 - [ ] JUnit 5 의존성 + 빈 테스트 1개로 테스트 하네스 검증
 - [ ] `.gitignore` (Gradle/IDE 산출물)
 - [ ] ROADMAP.md / docs 골격 커밋
@@ -38,7 +38,7 @@
 ## 권장 학습 자료 키워드
 
 - Gradle multi-project build
-- Java 21 toolchain (Gradle)
+- Kotlin Gradle plugin / jvmToolchain
 - JUnit 5 User Guide
 
 ## 학습 노트

@@ -16,7 +16,7 @@
 - [ ] `FrontController` (단일 진입 Handler — Step 2 라우터를 대체)
 - [ ] `HandlerMapping`: 컨트롤러 클래스의 애노테이션을 스캔해 `(HTTP 메서드, 경로 패턴) → Method` 매핑 테이블 구성
 - [ ] `HandlerAdapter`: 리플렉션으로 대상 메서드 invoke
-- [ ] `ArgumentResolver` 체인: path variable / 쿼리 파라미터 / JSON 바디 → 메서드 파라미터 바인딩 (record DTO)
+- [ ] `ArgumentResolver` 체인: path variable / 쿼리 파라미터 / JSON 바디 → 메서드 파라미터 바인딩 (data class DTO)
   - JSON 직렬화/역직렬화는 **Jackson 사용** — JSON 파싱은 이 프로젝트의 학습 목표가 아니다
 - [ ] 반환값 처리: 객체 → JSON 응답 (`MessageConverter` 흉내)
 - [ ] 전역 예외 처리기 1개 (`@ExceptionHandler` 스타일): 잘못된 JSON → 400
@@ -53,7 +53,9 @@
 
 - Spring Framework 공식 문서 "Web MVC > DispatcherServlet > Processing"
 - 토비의 스프링 Vol.2 — 스프링 MVC 장
-- Java Reflection API (`Method.invoke`, `Parameter.getName`)
+- Java Reflection API (`Method.invoke`, `Parameter.getName`) — Kotlin에서 그대로 사용 가능
+- kotlin-reflect (`KFunction`, `KParameter.name`) — Java 리플렉션만으로 파라미터 이름이 안 나올 때(`-java-parameters` 컴파일 옵션)와 비교해볼 것
+- Jackson `jackson-module-kotlin` (data class 역직렬화)
 
 ## 학습 노트
 

@@ -24,7 +24,7 @@
 - [ ] `@MyTransactional` + Step 6 프록시로 선언적 트랜잭션: begin(auto-commit off) → 성공 시 commit / 예외 시 rollback → 커넥션 정리
 - [ ] **핵심 시나리오**: 글 작성(post insert) + 포인트 적립(point update)을 한 트랜잭션으로 묶고, 포인트 로직에서 강제 예외 시 글도 롤백되는지 검증
 - [ ] boardy 저장소 전체를 in-memory Map → H2로 교체 (**컨트롤러/서비스 코드 무변경** = 계층 분리 검증)
-- [ ] (학습 노트 주제) 가상 스레드 + ThreadLocal 커넥션의 궁합 문제, `ScopedValue`(JEP 446) — Step 1에서 선택한 Java 21의 회수 지점
+- [ ] (학습 노트 주제) 가상 스레드 + ThreadLocal 커넥션의 궁합 문제, `ScopedValue`(JEP 446) — Step 1에서 선택한 JVM 21의 회수 지점
 
 ## Spring 대응표
 

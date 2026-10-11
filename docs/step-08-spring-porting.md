@@ -13,7 +13,8 @@
 
 ## 구현할 것
 
-- [ ] 새 모듈 `app-spring/`: 동일한 boardy API를 Spring Boot 3.x (Java 21)로 재작성
+- [ ] 새 모듈 `app-spring/`: 동일한 boardy API를 Spring Boot 3.x (Kotlin)로 재작성
+  - `kotlin("plugin.spring")`(all-open)을 붙이는 순간, Step 6에서 겪은 `final` 클래스 문제가 어떻게 사라지는지 확인
   - Web MVC + Spring `JdbcTemplate` + `@Transactional` + `HandlerInterceptor` 인증
   - 도메인 코드는 최대한 복사하고 **프레임워크 접점만 교체** (diff가 곧 비교 자료)
   - JPA는 의도적으로 제외 — Spring `JdbcTemplate`을 써야 Step 7과 1:1 비교가 된다 (JPA는 [부록](appendix-next-topics.md) 주제)
